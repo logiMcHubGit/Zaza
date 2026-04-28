@@ -11,18 +11,19 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --cream: #2d2215;
-      --dark: #1a1714;
-      --gold: #b89a6e;
-      --gold-light: #d4b896;
-      --text: #2d2926;
-      --muted: #9a8f85;
+      --bg:         #181410;
+      --dark:       #0a0806;
+      --gold:       #f0ece5;   /* ivoire vif — pour "ï", "aime", numéros, dividers */
+      --gold-light: #d8d4ce;   /* ivoire doux — pour les bordures */
+      --text:       #c8c4be;   /* texte courant */
+      --muted:      #706860;   /* textes secondaires */
+      --heading:    #f0ece5;   /* titres principaux */
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      background-color: var(--cream);
+      background-color: var(--bg);
       color: var(--text);
       font-family: 'Raleway', sans-serif;
       font-weight: 300;
@@ -59,7 +60,7 @@
       width: 600px;
       height: 600px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(184,154,110,0.12) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(240,236,229,0.07) 0%, transparent 70%);
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
@@ -77,7 +78,7 @@
       font-size: 0.7rem;
       letter-spacing: 0.35em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--muted);
       margin-bottom: 2rem;
       opacity: 0;
       animation: fadeUp 1s 0.3s forwards;
@@ -89,14 +90,16 @@
       font-size: clamp(4rem, 12vw, 9rem);
       line-height: 1;
       letter-spacing: -0.02em;
-      color: var(--dark);
+      color: var(--heading);
       opacity: 0;
       animation: fadeUp 1.2s 0.5s forwards;
     }
 
+    /* ï en ivoire vif et légèrement plus grand pour qu'il ressorte */
     .intro-name em {
       font-style: italic;
-      color: var(--gold);
+      color: #ffffff;
+      text-shadow: 0 0 40px rgba(255,255,255,0.25);
     }
 
     .intro-sub {
@@ -132,7 +135,7 @@
     .scroll-line {
       width: 1px;
       height: 40px;
-      background: linear-gradient(to bottom, var(--gold), transparent);
+      background: linear-gradient(to bottom, var(--gold-light), transparent);
       animation: scrollLine 2s 2s ease-in-out infinite;
     }
 
@@ -161,13 +164,13 @@
       content: '';
       flex: 1;
       height: 1px;
-      background: linear-gradient(to right, transparent, var(--gold-light), transparent);
+      background: linear-gradient(to right, transparent, rgba(200,196,190,0.3), transparent);
     }
 
     .divider-diamond {
       width: 6px;
       height: 6px;
-      background: var(--gold);
+      background: var(--gold-light);
       transform: rotate(45deg);
       flex-shrink: 0;
     }
@@ -196,8 +199,7 @@
       content: '';
       position: absolute;
       inset: -12px;
-      border: 1px solid var(--gold-light);
-      opacity: 0.5;
+      border: 1px solid rgba(200,196,190,0.2);
       z-index: 0;
     }
 
@@ -209,28 +211,30 @@
       display: block;
       position: relative;
       z-index: 1;
-      filter: sepia(10%) contrast(1.05);
+      filter: sepia(5%) contrast(1.05);
     }
 
     .photo-placeholder {
-      background: linear-gradient(135deg, #e8e0d6 0%, #d4c9bc 100%);
+      background: rgba(255,255,255,0.03);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       gap: 1rem;
-      color: var(--muted);
+      border: 1px dashed rgba(200,196,190,0.2);
     }
 
     .photo-placeholder .ph-icon {
       font-size: 2.5rem;
-      opacity: 0.4;
+      opacity: 0.2;
+      color: var(--gold-light);
     }
 
     .photo-placeholder .ph-text {
       font-size: 0.7rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
+      color: var(--muted);
       opacity: 0.5;
     }
 
@@ -241,7 +245,7 @@
       font-size: 0.65rem;
       letter-spacing: 0.4em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--muted);
       margin-bottom: 2.5rem;
     }
 
@@ -255,7 +259,7 @@
 
     .message-body em {
       font-style: italic;
-      color: var(--gold);
+      color: #ffffff;
     }
 
     .message-sign {
@@ -272,13 +276,15 @@
       font-size: clamp(1.8rem, 5vw, 2.8rem);
       font-weight: 300;
       font-style: italic;
-      color: var(--dark);
+      color: var(--heading);
       margin-bottom: 3.5rem;
       line-height: 1.2;
     }
 
+    /* "aime" — blanc pur, légère lueur */
     .reasons-title span {
-      color: var(--gold);
+      color: #ffffff;
+      text-shadow: 0 0 30px rgba(255,255,255,0.2);
     }
 
     .reasons-list {
@@ -293,7 +299,7 @@
       grid-template-columns: 2.5rem 1fr;
       gap: 0 1.5rem;
       padding: 1.8rem 0;
-      border-bottom: 1px solid rgba(184,154,110,0.2);
+      border-bottom: 1px solid rgba(200,196,190,0.12);
       opacity: 0;
       transform: translateX(-10px);
       transition: opacity 0.6s, transform 0.6s;
@@ -308,7 +314,7 @@
       font-family: 'Cormorant Garamond', serif;
       font-size: 0.8rem;
       font-style: italic;
-      color: var(--gold);
+      color: var(--gold-light);
       padding-top: 0.15rem;
       letter-spacing: 0.05em;
     }
@@ -323,7 +329,7 @@
 
     .reason-text strong {
       font-weight: 400;
-      color: var(--dark);
+      color: var(--heading);
     }
 
     /* ── CLOSING ── */
@@ -338,7 +344,7 @@
       font-size: clamp(1.5rem, 4vw, 2.2rem);
       font-style: italic;
       font-weight: 300;
-      color: var(--dark);
+      color: var(--heading);
       line-height: 1.6;
       max-width: 520px;
       margin: 0 auto 3rem;
@@ -346,7 +352,7 @@
 
     .closing-quote::before {
       content: '\201C';
-      color: var(--gold);
+      color: var(--gold-light);
       font-size: 1.5em;
       line-height: 0;
       vertical-align: -0.3em;
@@ -354,7 +360,7 @@
     }
     .closing-quote::after {
       content: '\201D';
-      color: var(--gold);
+      color: var(--gold-light);
       font-size: 1.5em;
       line-height: 0;
       vertical-align: -0.3em;
@@ -363,13 +369,13 @@
 
     .closing-heart {
       font-size: 1.1rem;
-      color: var(--gold);
+      color: var(--gold-light);
       letter-spacing: 0.5em;
       animation: heartbeat 3s ease-in-out infinite;
     }
 
     @keyframes heartbeat {
-      0%, 100% { opacity: 0.5; transform: scale(1); }
+      0%, 100% { opacity: 0.4; transform: scale(1); }
       50% { opacity: 1; transform: scale(1.2); }
     }
 
@@ -398,11 +404,12 @@
   <div class="photo-section">
     <div class="photo-frame">
       <!--
-        Pour ajouter ta photo, remplace le bloc ci-dessous par :
-        
+        Pour ajouter ta photo, remplace le bloc .photo-placeholder par :
+        <img src="TON_FICHIER.jpg" alt="Zaïna" />
       -->
       <div class="photo-placeholder">
-      <img src="Snapchat-896912423.jpg" alt="Zaïna" />
+        <div class="ph-icon">◈</div>
+        <div class="ph-text">Ta photo ici</div>
       </div>
     </div>
   </div>
@@ -467,7 +474,6 @@
   </div>
 
   <script>
-    // Intersection Observer pour les raisons
     const items = document.querySelectorAll('.reason-item');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry, i) => {
@@ -476,7 +482,6 @@
         }
       });
     }, { threshold: 0.15 });
-
     items.forEach(el => observer.observe(el));
   </script>
 
