@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="dark" />
   <title>Pour Zaïna</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,26 +12,26 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
+      color-scheme: dark;
       --bg:         #181410;
       --dark:       #0a0806;
-      --gold:       #f0ece5;   /* ivoire vif — pour "ï", "aime", numéros, dividers */
-      --gold-light: #d8d4ce;   /* ivoire doux — pour les bordures */
-      --text:       #c8c4be;   /* texte courant */
-      --muted:      #706860;   /* textes secondaires */
-      --heading:    #f0ece5;   /* titres principaux */
+      --gold-light: #d8d4ce;
+      --text:       #c8c4be;
+      --muted:      #706860;
+      --heading:    #f0ece5;
+      --accent:     #ffffff;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      background-color: var(--bg);
-      color: var(--text);
+      background-color: var(--bg) !important;
+      color: var(--text) !important;
       font-family: 'Raleway', sans-serif;
       font-weight: 300;
       overflow-x: hidden;
     }
 
-    /* ── GRAIN OVERLAY ── */
     body::before {
       content: '';
       position: fixed;
@@ -69,7 +70,7 @@
 
     @keyframes pulse {
       0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
-      50% { transform: translate(-50%, -50%) scale(1.15); opacity: 1; }
+      50%       { transform: translate(-50%, -50%) scale(1.15); opacity: 1; }
     }
 
     .intro-label {
@@ -78,7 +79,7 @@
       font-size: 0.7rem;
       letter-spacing: 0.35em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--muted) !important;
       margin-bottom: 2rem;
       opacity: 0;
       animation: fadeUp 1s 0.3s forwards;
@@ -90,15 +91,14 @@
       font-size: clamp(4rem, 12vw, 9rem);
       line-height: 1;
       letter-spacing: -0.02em;
-      color: var(--heading);
+      color: var(--heading) !important;
       opacity: 0;
       animation: fadeUp 1.2s 0.5s forwards;
     }
 
-    /* ï en ivoire vif et légèrement plus grand pour qu'il ressorte */
     .intro-name em {
       font-style: italic;
-      color: #ffffff;
+      color: var(--accent) !important;
       text-shadow: 0 0 40px rgba(255,255,255,0.25);
     }
 
@@ -107,7 +107,7 @@
       font-size: 0.85rem;
       font-weight: 300;
       letter-spacing: 0.15em;
-      color: var(--muted);
+      color: var(--muted) !important;
       opacity: 0;
       animation: fadeUp 1s 0.9s forwards;
     }
@@ -115,8 +115,7 @@
     .scroll-hint {
       position: absolute;
       bottom: 2.5rem;
-      left: 0;
-      right: 0;
+      left: 0; right: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -129,7 +128,7 @@
       font-size: 0.6rem;
       letter-spacing: 0.3em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--muted) !important;
     }
 
     .scroll-line {
@@ -140,14 +139,14 @@
     }
 
     @keyframes scrollLine {
-      0% { transform: scaleY(0); transform-origin: top; opacity: 0; }
-      50% { transform: scaleY(1); transform-origin: top; opacity: 1; }
+      0%   { transform: scaleY(0); transform-origin: top; opacity: 0; }
+      50%  { transform: scaleY(1); transform-origin: top; opacity: 1; }
       100% { transform: scaleY(1); transform-origin: bottom; opacity: 0; }
     }
 
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
     /* ── DIVIDER ── */
@@ -203,8 +202,7 @@
       z-index: 0;
     }
 
-    .photo-frame img,
-    .photo-placeholder {
+    .photo-frame img {
       width: 100%;
       aspect-ratio: 4/5;
       object-fit: cover;
@@ -215,6 +213,8 @@
     }
 
     .photo-placeholder {
+      width: 100%;
+      aspect-ratio: 4/5;
       background: rgba(255,255,255,0.03);
       display: flex;
       flex-direction: column;
@@ -222,19 +222,21 @@
       justify-content: center;
       gap: 1rem;
       border: 1px dashed rgba(200,196,190,0.2);
+      position: relative;
+      z-index: 1;
     }
 
-    .photo-placeholder .ph-icon {
+    .ph-icon {
       font-size: 2.5rem;
       opacity: 0.2;
-      color: var(--gold-light);
+      color: var(--gold-light) !important;
     }
 
-    .photo-placeholder .ph-text {
+    .ph-text {
       font-size: 0.7rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--muted) !important;
       opacity: 0.5;
     }
 
@@ -245,7 +247,7 @@
       font-size: 0.65rem;
       letter-spacing: 0.4em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--muted) !important;
       margin-bottom: 2.5rem;
     }
 
@@ -254,12 +256,12 @@
       font-size: clamp(1.3rem, 3vw, 1.65rem);
       font-weight: 300;
       line-height: 1.9;
-      color: var(--text);
+      color: var(--text) !important;
     }
 
     .message-body em {
       font-style: italic;
-      color: #ffffff;
+      color: var(--accent) !important;
     }
 
     .message-sign {
@@ -267,7 +269,7 @@
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
       font-size: 1.1rem;
-      color: var(--muted);
+      color: var(--muted) !important;
     }
 
     /* ── REASONS ── */
@@ -276,14 +278,13 @@
       font-size: clamp(1.8rem, 5vw, 2.8rem);
       font-weight: 300;
       font-style: italic;
-      color: var(--heading);
+      color: var(--heading) !important;
       margin-bottom: 3.5rem;
       line-height: 1.2;
     }
 
-    /* "aime" — blanc pur, légère lueur */
     .reasons-title span {
-      color: #ffffff;
+      color: var(--accent) !important;
       text-shadow: 0 0 30px rgba(255,255,255,0.2);
     }
 
@@ -291,7 +292,6 @@
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 0;
     }
 
     .reason-item {
@@ -314,7 +314,7 @@
       font-family: 'Cormorant Garamond', serif;
       font-size: 0.8rem;
       font-style: italic;
-      color: var(--gold-light);
+      color: var(--gold-light) !important;
       padding-top: 0.15rem;
       letter-spacing: 0.05em;
     }
@@ -324,19 +324,18 @@
       font-size: clamp(1.05rem, 2.5vw, 1.25rem);
       font-weight: 300;
       line-height: 1.7;
-      color: var(--text);
+      color: var(--text) !important;
     }
 
     .reason-text strong {
       font-weight: 400;
-      color: var(--heading);
+      color: var(--heading) !important;
     }
 
     /* ── CLOSING ── */
     .closing {
       text-align: center;
       padding: 5rem 2rem 6rem;
-      position: relative;
     }
 
     .closing-quote {
@@ -344,7 +343,7 @@
       font-size: clamp(1.5rem, 4vw, 2.2rem);
       font-style: italic;
       font-weight: 300;
-      color: var(--heading);
+      color: var(--heading) !important;
       line-height: 1.6;
       max-width: 520px;
       margin: 0 auto 3rem;
@@ -358,6 +357,7 @@
       vertical-align: -0.3em;
       margin-right: 0.1em;
     }
+
     .closing-quote::after {
       content: '\201D';
       color: var(--gold-light);
@@ -369,17 +369,16 @@
 
     .closing-heart {
       font-size: 1.1rem;
-      color: var(--gold-light);
+      color: var(--gold-light) !important;
       letter-spacing: 0.5em;
       animation: heartbeat 3s ease-in-out infinite;
     }
 
     @keyframes heartbeat {
       0%, 100% { opacity: 0.4; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.2); }
+      50%       { opacity: 1;   transform: scale(1.2); }
     }
 
-    /* ── RESPONSIVE ── */
     @media (max-width: 480px) {
       section { padding: 3.5rem 1.5rem; }
     }
@@ -404,12 +403,11 @@
   <div class="photo-section">
     <div class="photo-frame">
       <!--
-        Pour ajouter ta photo, remplace le bloc .photo-placeholder par :
-        <img src="TON_FICHIER.jpg" alt="Zaïna" />
+        Pour ajouter ta photo, remplace le bloc ci-dessous par :
+        
       -->
       <div class="photo-placeholder">
-        <div class="ph-icon">◈</div>
-        <div class="ph-text">Ta photo ici</div>
+        <img src="Image.jpg" alt="Zaïna"/>
       </div>
     </div>
   </div>
